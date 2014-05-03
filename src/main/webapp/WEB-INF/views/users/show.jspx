@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_cz_vse_togather_domain_User" object="${user}" path="/users" z="n+N6kHwkqEIbqEFnPACeGytACqY=">
+        <field:display field="email" id="s_cz_vse_togather_domain_User_email" object="${user}" z="rHgQ+reBQbkzlMIElkcqw09VhqQ="/>
+        <field:display field="password" id="s_cz_vse_togather_domain_User_password" object="${user}" z="qwHBbbZJ//lP6nQYg97N+Z8dESA="/>
+        <field:display field="name" id="s_cz_vse_togather_domain_User_name" object="${user}" z="Rnt0cbzMe28gDlBT7rAX5hniAqM="/>
+        <field:display field="bio" id="s_cz_vse_togather_domain_User_bio" object="${user}" z="84zF8ccHDrbhbEoP5gr9E4FjpzQ="/>
+        <field:display date="true" dateTimePattern="${user_createdat_date_format}" field="createdAt" id="s_cz_vse_togather_domain_User_createdAt" object="${user}" z="RLNJeN/+mcvU36eTZ7d8qTyAk0k="/>
+        <field:display field="events" id="s_cz_vse_togather_domain_User_events" object="${user}" z="xq97zJt84luNt6RKUjReYGptWws="/>
+    </page:show>
+</div>

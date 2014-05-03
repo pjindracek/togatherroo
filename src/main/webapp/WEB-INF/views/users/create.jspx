@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_cz_vse_togather_domain_User" modelAttribute="user" path="/users" render="${empty dependencies}" z="NUP0gjTWtRJA01FRkk2zB4Bmi9w=">
+        <field:input field="email" id="c_cz_vse_togather_domain_User_email" validationMessageCode="field_invalid_email" z="8DTVabUcJdyIf98XqANbzSaJkno="/>
+        <field:input field="password" id="c_cz_vse_togather_domain_User_password" z="gTcI2U8xfZyQyJ6GmhYtiBm/JSw="/>
+        <field:input field="name" id="c_cz_vse_togather_domain_User_name" z="6/1R+rlsZj+xUguaRwfvF3TpUkE="/>
+        <field:input field="bio" id="c_cz_vse_togather_domain_User_bio" z="bVAtVjwxXedaD++rAyPb0hgUNcY="/>
+        <field:datetime dateTimePattern="${user_createdat_date_format}" field="createdAt" id="c_cz_vse_togather_domain_User_createdAt" z="65K17/4KupGQDQ1FsLkbC/58A4A="/>
+        <field:simple field="memberships" id="c_cz_vse_togather_domain_User_memberships" messageCode="entity_reference_not_managed" messageCodeAttribute="Membership" z="XOnEB8nJOICGMaZntkvcHjRFpOQ="/>
+        <field:simple field="comments" id="c_cz_vse_togather_domain_User_comments" messageCode="entity_reference_not_managed" messageCodeAttribute="Comment" z="qmP1tiI6HU1ZebHmaZfGcx5mqJ0="/>
+        <field:select field="events" id="c_cz_vse_togather_domain_User_events" itemValue="id" items="${events}" multiple="true" path="/events" z="Nb8XvX/4HucW3teXRV1pAuqKhUE="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_cz_vse_togather_domain_User" render="${not empty dependencies}" z="7AhvtOv5rfaXf+aOI/VuUsx5U4k="/>
+</div>

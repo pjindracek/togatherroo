@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_cz_vse_togather_domain_Group" object="${group}" path="/groups" z="5P6KrFEo2Tcn2jIDm1tldRhFgNM=">
+        <field:display field="name" id="s_cz_vse_togather_domain_Group_name" object="${group}" z="RetoMNAKAgxJeamuZ9pb2flnFoI="/>
+        <field:display field="motto" id="s_cz_vse_togather_domain_Group_motto" object="${group}" z="cLGhc2ghf/o9ZK8JplQjiMCa884="/>
+    </page:show>
+</div>

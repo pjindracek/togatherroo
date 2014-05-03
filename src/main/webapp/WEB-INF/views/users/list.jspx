@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_cz_vse_togather_domain_User" items="${users}" z="7gttx7W5JXMn27bWd3q7mKBrDpA=">
+        <table:table data="${users}" id="l_cz_vse_togather_domain_User" path="/users" z="IHWog7yA/HRX0PKXaoRWnyVlJZA=">
+            <table:column id="c_cz_vse_togather_domain_User_email" property="email" z="eWEI4tuAl45D/ukLHWbTFMLmlo0="/>
+            <table:column id="c_cz_vse_togather_domain_User_password" property="password" z="WZkRlmaHjv2Atq/A82kF74FGIhs="/>
+            <table:column id="c_cz_vse_togather_domain_User_name" property="name" z="D1Xxu5sKqr+CqQrlCjgvw46/k0k="/>
+            <table:column id="c_cz_vse_togather_domain_User_bio" property="bio" z="jGdOwMv1vym1x1/MjyvyHXiACTI="/>
+            <table:column date="true" dateTimePattern="${user_createdat_date_format}" id="c_cz_vse_togather_domain_User_createdAt" property="createdAt" z="r7e5zDhm9uBpZKVVga1gI51BUWc="/>
+        </table:table>
+    </page:list>
+</div>

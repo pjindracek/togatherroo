@@ -56,3 +56,8 @@ field set --fieldName events --type ~.domain.Event --cardinality MANY_TO_MANY
 focus --class ~.domain.Event
 field set --fieldName users --type ~.domain.User --cardinality MANY_TO_MANY --mappedBy events
 web mvc setup
+web mvc scaffold --class ~.web.UserController --backingType ~.domain.User
+web mvc scaffold --class ~.web.GroupController --backingType ~.domain.Group
+web mvc scaffold --class ~.web.EventController --backingType ~.domain.Event
+web mvc controller --class ~.web.CommentController
+web mvc controller --class ~.web.WelcomeController

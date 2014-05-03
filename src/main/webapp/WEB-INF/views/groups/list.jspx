@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_cz_vse_togather_domain_Group" items="${groups}" z="plsOYZlKDdemvvzNz9tBP2Kab4g=">
+        <table:table data="${groups}" id="l_cz_vse_togather_domain_Group" path="/groups" z="th7VeIm7in/nVQJVVqKEDmjlqeM=">
+            <table:column id="c_cz_vse_togather_domain_Group_name" property="name" z="V5mqJ1cRHtIkzBxVrO+01Pc7yg8="/>
+            <table:column id="c_cz_vse_togather_domain_Group_motto" property="motto" z="TZgMsULRBlvsrcFSbB1jB2FoTxw="/>
+        </table:table>
+    </page:list>
+</div>
