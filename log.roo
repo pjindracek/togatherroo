@@ -1,0 +1,58 @@
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-04-30 16:42:40
+project --topLevelPackage cz.vse.togather --projectName togatherroo --java 6 --packaging WAR
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-04-30 16:42:42
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-04-30 16:52:28
+hint
+jpa setup --provider HIBERNATE --database POSTGRES 
+entity jpa --class cz.vse.togather.domain.User --permitReservedWords --testAutomatically 
+field string email
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-05-02 00:02:36
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-05-02 14:01:25
+entity jpa --class ~.domain.User --testAutomatically --permitReservedWords 
+field string email
+field string password
+field string name
+field string bio
+field date --fieldName createdAt --type java.util.Date --persistenceType JPA_TIMESTAMP
+entity jpa --class ~.domain.Group --testAutomatically --permitReservedWords
+field string name
+field string --fieldName motto --sizeMax 500
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-05-03 00:56:39
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-05-03 13:17:24
+entity jpa --class ~.domain.Comment --testAutomatically --permitReservedWords
+field string --fieldName title
+field string --fieldName message --sizeMax 500
+field date --fieldName createdAt --type java.util.Date --persistenceType JPA_TIMESTAMP
+entity jpa --class ~.domain.Event --testAutomatically --permitReservedWords
+field string --fieldName title
+field string --fieldName description --sizeMax 500
+field date --fieldName beginning --type java.util.Date --persistenceType JPA_TIMESTAMP
+// [failed] field date --fieldName end --type java.util.Date --persistenceType JPA_TIMESTAMP
+entity jpa --class ~.domain.Membership --testAutomatically --permitReservedWords
+field boolean --fieldName admin
+focus --class ~.domain.User
+field set --fieldName memberships --type ~.domain.Membership --cardinality ONE_TO_MANY --mappedBy user
+focus --class ~.domain.Membership
+// [failed] field reference --fieldName user --type ~.domain.User --cardinality MANY_TO_ONE 
+field reference --fieldName user --type ~.domain.User --cardinality MANY_TO_ONE --permitReservedWords 
+field reference --fieldName group --type ~.domain.Group --cardinality MANY_TO_ONE --permitReservedWords 
+focus --class ~.domain.Group
+field set --fieldName memberships --type ~.domain.Membership --cardinality ONE_TO_MANY --mappedBy group
+focus --class ~.domain.User
+field set --fieldName comments --type ~.domain.Comment --cardinality ONE_TO_MANY --mappedBy user
+focus --class ~.domain.Comment
+field reference --fieldName user --type ~.domain.User --cardinality MANY_TO_ONE --permitReservedWords 
+focus --class ~.domain.Group
+field set --fieldName comments --type ~.domain.Comment --cardinality ONE_TO_MANY --mappedBy group
+field reference --fieldName group --type ~.domain.Group --cardinality MANY_TO_ONE --permitReservedWords 
+focus --class ~.domain.Comment
+field reference --fieldName group --type ~.domain.Group --cardinality MANY_TO_ONE --permitReservedWords 
+focus --class ~.domain.Group
+field set --fieldName events --type ~.domain.Event --cardinality ONE_TO_MANY --mappedBy group
+focus --class ~.domain.Event
+field reference --fieldName group --type ~.domain.Group --cardinality MANY_TO_ONE --permitReservedWords 
+focus --class ~.domain.User
+field set --fieldName events --type ~.domain.Event --cardinality MANY_TO_MANY 
+focus --class ~.domain.Event
+field set --fieldName users --type ~.domain.User --cardinality MANY_TO_MANY --mappedBy events
+web mvc setup
