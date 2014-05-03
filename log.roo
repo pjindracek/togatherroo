@@ -61,3 +61,4 @@ web mvc scaffold --class ~.web.GroupController --backingType ~.domain.Group
 web mvc scaffold --class ~.web.EventController --backingType ~.domain.Event
 web mvc controller --class ~.web.CommentController
 web mvc controller --class ~.web.WelcomeController
+security setup
