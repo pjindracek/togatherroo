@@ -18,7 +18,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Event, String> ApplicationConversionServiceFactoryBean.getEventToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<cz.vse.togather.domain.Event, java.lang.String>() {
             public String convert(Event event) {
-                return new StringBuilder().append(event.getTitle()).append(' ').append(event.getDescription()).append(' ').append(event.getBeginning()).toString();
+                return new StringBuilder().append(event.getTitle()).append(' ').append(event.getDescription()).append(' ').append(event.getBeginning()).append(' ').append(event.getEnd()).toString();
             }
         };
     }

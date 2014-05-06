@@ -11,7 +11,7 @@ public class Membership {
 
     /**
      */
-    private Boolean admin;
+    private Boolean admin = false;
 
     /**
      */

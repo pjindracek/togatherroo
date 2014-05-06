@@ -3,6 +3,9 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+        <menu:category id="c_controller" z="nj8Dm3hojIyIEyPkwE1UMDIs+K8=">
+            <menu:item id="i_controller__userindex_id" messageCode="global_generic" url="/user/index" z="aFvpqHl/PUUBWdOkH6ebhcUw4Qg="/>
+        </menu:category>
         <menu:category id="c_user" z="uoTSf/uIZ821ZppidzS9aO776yk=">
             <menu:item id="i_user_new" messageCode="global_menu_new" url="/users?form" z="Zv1m8u2rG+JFKcvJ+AHVVK0ey24="/>
             <menu:item id="i_user_list" messageCode="global_menu_list" url="/users?page=1&amp;size=${empty param.size ? 10 : param.size}" z="4MY4uybxa60Q1G2rlI5bOwg+sm0="/>
@@ -10,14 +13,6 @@
         <menu:category id="c_group" z="IzsiYJAVMvw1MYB2rS012W6p/sQ=">
             <menu:item id="i_group_new" messageCode="global_menu_new" url="/groups?form" z="NplgVuxbIfib+TWeBYdtVVPJyuU="/>
             <menu:item id="i_group_list" messageCode="global_menu_list" url="/groups?page=1&amp;size=${empty param.size ? 10 : param.size}" z="+yB7q/lCvKVAK6joKjX6uJqct/A="/>
-        </menu:category>
-        <menu:category id="c_event" z="AURyeKTmOObIARXqfI9DXukJNIE=">
-            <menu:item id="i_event_new" messageCode="global_menu_new" url="/events?form" z="BObcRn250Q23VbXG8kWIXR49efE="/>
-            <menu:item id="i_event_list" messageCode="global_menu_list" url="/events?page=1&amp;size=${empty param.size ? 10 : param.size}" z="MxywFHCy64/coyVU05GEg92ERF4="/>
-        </menu:category>
-        <menu:category id="c_controller" z="nj8Dm3hojIyIEyPkwE1UMDIs+K8=">
-            <menu:item id="i_controller__commentindex_id" messageCode="global_generic" url="/comment/index" z="x1PJfR5QzS9eytbo5i6sxYm7IrY="/>
-            <menu:item id="i_controller__welcomeindex_id" messageCode="global_generic" url="/welcome/index" z="6SWNye4wXit+lnVho82YbbEcuno="/>
         </menu:category>
     </menu:menu>
 </div>

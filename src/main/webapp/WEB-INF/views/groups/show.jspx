@@ -1,9 +1,128 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" xmlns:tiles="http://tiles.apache.org/tags-tiles" class="container" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    <spring:url value="/groups/${itemId}?form" var="groupEditUrl"/>
+    <spring:url value="/groups/${group.id}/events?form" var="eventCreateUrl"/>
+    <spring:url value="/groups/${itemId}/register" var="groupRegisterUrl"/>
+    <spring:url value="/groups/${itemId}/unregister" var="groupUnregisterUrl"/>
+    <spring:url value="/groups/${itemId}" var="groupDeleteUrl"/>
+    <spring:url value="/users?form" var="signUpUrl"/>
+    <div class="col-md-12">
+        <h1>
+      Group <strong>${group.name}</strong>
+            <span class="label label-primary">${group.category.name}</span>
+        </h1>
+        <p>${group.motto}</p>
+    </div>
+    <div class="col-md-3 left-menu">
+        <h2>Settings</h2>
+        <c:if test="${isAdmin}">
+            <p>
+                <a href="${groupEditUrl}">Edit group settings</a>
+            </p>
+            <p>
+                <a href="${eventCreateUrl}">Create event</a>
+            </p>
+        </c:if>
+        <c:choose>
+            <c:when test="${!isMember}">
+                <form:form action="${groupRegisterUrl}" method="POST">
+                    <input type="submit" value="Add me to the group!"/>
+                </form:form>
+            </c:when>
+            <c:when test="${!isAdmin}">
+                <form:form action="${groupUnregisterUrl}" method="POST">
+                    <input type="submit" value="Leave group"/>
+                </form:form>
+            </c:when>
+            <c:otherwise>
+                <form:form action="${groupDeleteUrl}" method="DELETE" onsubmit="alert('Careful! You will delete the entire group!')">
+                    <input type="submit" value="Delete the group"/>
+                </form:form>
+            </c:otherwise>
+        </c:choose>
+        <h2>Members</h2>
+        <p>
+            <c:choose>
+                <c:when test="${isMember}">
+                    <ul>
+                        <c:forEach items="${group.members}" var="m">
+                            <spring:url value="/users/profile/${m.id}" var="userUrl"/>
+                            <li>
+                                <a href="${userUrl}">${m.name}</a>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </c:when>
+                <c:otherwise>
+	       Only members can see other members in this group.
+            <a href="${signUpUrl}">Become a member!</a>
+                </c:otherwise>
+            </c:choose>
+        </p>
+        <h2>Events</h2>
+        <c:if test="${isMember}">
+            <h3>Upcoming</h3>
+            <c:if test="${fn:length(currentEvents) &gt; 0}">
+                <ul>
+                    <c:forEach items="${currentEvents}" var="e">
+                        <spring:url value="/groups/${itemId}/events/${e.id}" var="eventUrl"/>
+                        <li>
+                            <a href="${eventUrl}">${e.title}</a>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </c:if>
+            <c:if test="${fn:length(currentEvents) == 0}">
+            There are no upcoming events.
+        </c:if>
+            <h3>Past</h3>
+            <c:if test="${fn:length(pastEvents) &gt; 0}">
+                <ul>
+                    <c:forEach items="${pastEvents}" var="e">
+                        <spring:url value="/groups/${itemId}/events/${e.id}" var="eventUrl"/>
+                        <li>
+                            <a href="${eventUrl}">${e.title}</a>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </c:if>
+            <c:if test="${fn:length(pastEvents) == 0}">
+            There are no past events.
+        </c:if>
+        </c:if>
+        <c:if test="${!isMember}">
+            <p>Only members can see events of this group.</p>
+        </c:if>
+    </div>
+    <div class="col-md-6">
+        <h2>Board</h2>
+        <c:if test="${isMember}">
+            <tiles:insertAttribute name="form"/>
+            <hr/>
+            <c:forEach items="${group.comments}" var="c">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                ${c.title}
+                <span class="pull-right">, ${c.createdAt}</span>
+                        <spring:url value="/users/profile/${c.user.id}" var="userUrl"/>
+                        <span class="pull-right">by <a href="${userUrl}">${c.user.name}</a>
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        <p>${c.message}</p>
+                    </div>
+                </div>
+            </c:forEach>
+        </c:if>
+        <c:if test="${!isMember}">
+            <p>Discussion only for members.</p>
+        </c:if>
+    </div>
     <page:show id="ps_cz_vse_togather_domain_Group" object="${group}" path="/groups" z="5P6KrFEo2Tcn2jIDm1tldRhFgNM=">
         <field:display field="name" id="s_cz_vse_togather_domain_Group_name" object="${group}" z="RetoMNAKAgxJeamuZ9pb2flnFoI="/>
         <field:display field="motto" id="s_cz_vse_togather_domain_Group_motto" object="${group}" z="cLGhc2ghf/o9ZK8JplQjiMCa884="/>
+        <field:display field="category" id="s_cz_vse_togather_domain_Group_category" object="${group}" z="+1T8y7hd/3lwhfDyd6Xe1/0LmfQ="/>
     </page:show>
 </div>

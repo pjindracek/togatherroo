@@ -34,6 +34,7 @@ privileged aspect EventDataOnDemand_Roo_DataOnDemand {
         Event obj = new Event();
         setBeginning(obj, index);
         setDescription(obj, index);
+        setEnd(obj, index);
         setTitle(obj, index);
         return obj;
     }
@@ -49,6 +50,11 @@ privileged aspect EventDataOnDemand_Roo_DataOnDemand {
             description = description.substring(0, 500);
         }
         obj.setDescription(description);
+    }
+    
+    public void EventDataOnDemand.setEnd(Event obj, int index) {
+        Date end = new GregorianCalendar(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH), Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), Calendar.getInstance().get(Calendar.SECOND) + new Double(Math.random() * 1000).intValue()).getTime();
+        obj.setEnd(end);
     }
     
     public void EventDataOnDemand.setTitle(Event obj, int index) {

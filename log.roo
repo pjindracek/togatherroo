@@ -62,3 +62,30 @@ web mvc scaffold --class ~.web.EventController --backingType ~.domain.Event
 web mvc controller --class ~.web.CommentController
 web mvc controller --class ~.web.WelcomeController
 security setup
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-05-04 00:12:56
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-05-04 15:59:20
+focus --class ~.domain.User
+finder add --finderName findUserByEmailEquals
+// [failed] finder add --finderName findUsersByEmailEquals
+focus --class ~.domain.Event
+// [failed] field date --fieldName end --type java.util.Date --persistenceType JPA_TIMESTAMP
+field date --fieldName end --type java.util.Date --persistenceType JPA_TIMESTAMP --permitReservedWords 
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-05-05 00:32:37
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-05-05 17:10:13
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-05-05 23:54:48
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-05-06 12:15:12
+enum type --class ~.domain.CategoryEnum
+enum constant --name CULTURE
+enum constant --name BUSINESS
+enum constant --name SPORT
+enum constant --name SOCIAL
+enum constant --name FAMILY
+enum constant --name RELIGION
+enum constant --name FOOD
+enum constant --name TECHNOLOGY
+enum constant --name HOBBIES
+enum constant --name PETS
+focus --class ~.domain.Group 
+// [failed] field enum --fieldName category --type ~.domain.CategoryEnum --enumType ORDINAL 
+// [failed] field enum --fieldName category --type ~.domain.CategoryEnum --enumType ORDINAL 
+field enum --fieldName category --type ~.domain.CategoryEnum --enumType ORDINAL 

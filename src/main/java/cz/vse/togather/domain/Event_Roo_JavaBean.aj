@@ -35,6 +35,14 @@ privileged aspect Event_Roo_JavaBean {
         this.beginning = beginning;
     }
     
+    public Date Event.getEnd() {
+        return this.end;
+    }
+    
+    public void Event.setEnd(Date end) {
+        this.end = end;
+    }
+    
     public Group Event.getGroup() {
         return this.group;
     }

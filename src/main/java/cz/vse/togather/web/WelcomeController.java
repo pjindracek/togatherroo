@@ -1,22 +1,16 @@
 package cz.vse.togather.web;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-@RequestMapping("/welcome/**")
+import cz.vse.togather.domain.Group;
+
 @Controller
 public class WelcomeController {
 
-    @RequestMapping(method = RequestMethod.POST, value = "{id}")
-    public void post(@PathVariable Long id, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-    }
-
-    @RequestMapping
-    public String index() {
+    @RequestMapping("/")
+    public String index(Model model) {
+        model.addAttribute("groups", Group.findGroupEntries(0, 3, "id", "desc"));
         return "welcome/index";
     }
 }

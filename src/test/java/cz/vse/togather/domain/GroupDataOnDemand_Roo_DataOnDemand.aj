@@ -3,6 +3,7 @@
 
 package cz.vse.togather.domain;
 
+import cz.vse.togather.domain.CategoryEnum;
 import cz.vse.togather.domain.Group;
 import cz.vse.togather.domain.GroupDataOnDemand;
 import java.security.SecureRandom;
@@ -24,9 +25,15 @@ privileged aspect GroupDataOnDemand_Roo_DataOnDemand {
     
     public Group GroupDataOnDemand.getNewTransientGroup(int index) {
         Group obj = new Group();
+        setCategory(obj, index);
         setMotto(obj, index);
         setName(obj, index);
         return obj;
+    }
+    
+    public void GroupDataOnDemand.setCategory(Group obj, int index) {
+        CategoryEnum category = CategoryEnum.class.getEnumConstants()[0];
+        obj.setCategory(category);
     }
     
     public void GroupDataOnDemand.setMotto(Group obj, int index) {

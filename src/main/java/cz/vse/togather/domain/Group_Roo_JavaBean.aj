@@ -3,6 +3,7 @@
 
 package cz.vse.togather.domain;
 
+import cz.vse.togather.domain.CategoryEnum;
 import cz.vse.togather.domain.Comment;
 import cz.vse.togather.domain.Event;
 import cz.vse.togather.domain.Group;
@@ -17,6 +18,14 @@ privileged aspect Group_Roo_JavaBean {
     
     public void Group.setName(String name) {
         this.name = name;
+    }
+    
+    public CategoryEnum Group.getCategory() {
+        return this.category;
+    }
+    
+    public void Group.setCategory(CategoryEnum category) {
+        this.category = category;
     }
     
     public String Group.getMotto() {

@@ -30,9 +30,15 @@ public class Event {
     /**
      */
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "M-")
+    @DateTimeFormat(style = "MS")
     private Date beginning;
 
+    /**
+     */
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "MS")
+    private Date end;
+    
     /**
      */
     @ManyToOne

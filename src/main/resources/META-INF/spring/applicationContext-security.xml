@@ -6,22 +6,25 @@
         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
     
     <http auto-config="true" use-expressions="true">
-        <form-login login-processing-url="/resources/j_spring_security_check" login-page="/user/login" authentication-failure-url="/user/login?login_error=t" />
-        <logout logout-url="/resources/j_spring_security_logout" logout-success-url="/user/logout" />
-        <intercept-url pattern="/**" access="isAuthenticated()" />
+        <form-login login-processing-url="/resources/j_spring_security_check" login-page="/users/login" authentication-failure-url="/users/login?login_error=t" default-target-url="/users/profile" />
+        <logout logout-url="/resources/j_spring_security_logout" logout-success-url="/users/logout" />
         <intercept-url pattern="/" access="permitAll" />
-        <intercept-url pattern="/user/login" access="permitAll" />
-        <intercept-url pattern="/user/logout" access="permitAll" />
-        <intercept-url pattern="/profile/**" access="permitAll" />
-        <intercept-url pattern="/search/**" access="permitAll" />
+        <intercept-url pattern="/resources/**" access="permitAll" />
+        <intercept-url pattern="/users/login" access="permitAll" />
+        <intercept-url pattern="/users/logout" access="permitAll" />
+        <intercept-url pattern="/users/profile/**" access="permitAll" />
+        <intercept-url pattern="/groups/search" access="permitAll" />
+        <intercept-url pattern="/groups/**" method="GET" access="permitAll" />        
+        <intercept-url pattern="/users" access="permitAll" />
+        <intercept-url pattern="/**" access="isAuthenticated()" />
     </http>
-   
+    
     <authentication-manager>
         <authentication-provider>
             <jdbc-user-service 
                     data-source-ref="dataSource" 
-                    users-by-username-query="select email,password,'true' as enabled from user where email = ?" 
-                    authorities-by-username-query="select email,'ROLE_USER' from uzivatel where email = ?"/>
+                    users-by-username-query="select email, password, 'true' as enabled from &quot;user&quot; where email like ?" 
+                    authorities-by-username-query="select email, 'ROLE_USER' as role from &quot;user&quot; where email like ?"/>
         </authentication-provider>
     </authentication-manager>
     
