@@ -31,12 +31,15 @@ privileged aspect UserDataOnDemand_Roo_DataOnDemand {
         setCreatedAt(obj, index);
         setEmail(obj, index);
         setName(obj, index);
-        setPassword(obj, index);
+        setPasswordEncrypted(obj, index);
         return obj;
     }
     
     public void UserDataOnDemand.setBio(User obj, int index) {
         String bio = "bio_" + index;
+        if (bio.length() > 500) {
+            bio = bio.substring(0, 500);
+        }
         obj.setBio(bio);
     }
     
@@ -55,9 +58,9 @@ privileged aspect UserDataOnDemand_Roo_DataOnDemand {
         obj.setName(name);
     }
     
-    public void UserDataOnDemand.setPassword(User obj, int index) {
-        String password = "password_" + index;
-        obj.setPassword(password);
+    public void UserDataOnDemand.setPasswordEncrypted(User obj, int index) {
+        String passwordEncrypted = "passwordEncrypted_" + index;
+        obj.setPasswordEncrypted(passwordEncrypted);
     }
     
     public User UserDataOnDemand.getSpecificUser(int index) {

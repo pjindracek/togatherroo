@@ -13,10 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.joda.time.format.DateTimeFormat;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
@@ -28,11 +25,8 @@ privileged aspect UserController_Roo_Controller {
         return "users/create";
     }
     
-        
-        
-        
     void UserController.addDateTimeFormatPatterns(Model uiModel) {
-        uiModel.addAttribute("user_createdat_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("user_createdat_date_format", DateTimeFormat.patternForStyle("MS", LocaleContextHolder.getLocale()));
     }
     
     void UserController.populateEditForm(Model uiModel, User user) {

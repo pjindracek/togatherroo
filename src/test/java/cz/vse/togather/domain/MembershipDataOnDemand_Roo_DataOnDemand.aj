@@ -38,7 +38,7 @@ privileged aspect MembershipDataOnDemand_Roo_DataOnDemand {
     }
     
     public void MembershipDataOnDemand.setAdmin(Membership obj, int index) {
-        Boolean admin = Boolean.TRUE;
+        Boolean admin = false;
         obj.setAdmin(admin);
     }
     

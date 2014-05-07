@@ -1,13 +1,16 @@
 package cz.vse.togather.domain;
+import java.util.Date;
+
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
-import javax.validation.constraints.Size;
-import java.util.Date;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import org.springframework.format.annotation.DateTimeFormat;
-import javax.persistence.ManyToOne;
 
 @RooJavaBean
 @RooToString
@@ -16,11 +19,13 @@ public class Comment {
 
     /**
      */
+    @NotBlank
     private String title;
 
     /**
      */
     @Size(max = 500)
+    @NotBlank
     private String message;
 
     /**

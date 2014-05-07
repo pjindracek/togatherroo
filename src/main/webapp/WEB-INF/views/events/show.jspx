@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+ xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" 
+ xmlns:spring="http://www.springframework.org/tags" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" class="container" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <page:show id="ps_cz_vse_togather_domain_Event" object="${event}" path="/events" z="3f+5d9r9bIjAdnPHszpi/0mjY4s=">
-        <field:display field="title" id="s_cz_vse_togather_domain_Event_title" object="${event}" z="Q5cMnF8+eIOKKLFNxFGB1aTLz5o="/>
-        <field:display field="description" id="s_cz_vse_togather_domain_Event_description" object="${event}" z="7j2RnlAiKSIhi8rZECzwLZ4vi5Y="/>
-        <field:display date="true" dateTimePattern="${event_beginning_date_format}" field="beginning" id="s_cz_vse_togather_domain_Event_beginning" object="${event}" z="M9iB/ysvretVnQMeEXf2nlsn1pc="/>
-        <field:display field="group" id="s_cz_vse_togather_domain_Event_group" object="${event}" z="GdFpw+ok+viaQNtdkj0psWdAcw0="/>
-        <field:display field="users" id="s_cz_vse_togather_domain_Event_users" object="${event}" z="u856IROBx8RJmYo8TsjMjMgt39s="/>
-    </page:show>
+    <h1>Event <strong>${event.title}</strong> of group <strong>${event.group.name}</strong>
+    </h1>
+    <c:if test="${isAdmin}">
+        <spring:url value="/groups/${groupId}/events/${event.id}?form" var="eventEditUrl"/>
+        <p>
+            <a href="${eventEditUrl}">Edit event</a>
+        </p>
+    </c:if>
+    <p>
+        <c:if test="${!isAttending}">
+            <spring:url value="/groups/${groupId}/events/${event.id}/register" var="eventRegisterUrl"/>
+            <form:form action="${eventRegisterUrl}" method="POST">
+                <input type="submit" value="Join this event!"/>
+            </form:form>
+        </c:if>
+        <c:if test="${isAttending}">
+            <spring:url value="/groups/${groupId}/events/${event.id}/unregister" var="eventUnregisterUrl"/>
+            <form:form action="${eventUnregisterUrl}" method="POST">
+                <input type="submit" value="Leave this event!"/>
+            </form:form>
+        </c:if>
+    </p>
+    <h2>From</h2>
+    <p><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${event.beginning}" /></p>
+    <h2>To</h2>
+    <p><fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${event.end}" /></p>
+    <h2>Who is attending?</h2>
+    <c:choose>
+        <c:when test="${fn:length(event.users) &gt; 0}">
+            <ul>
+                <c:forEach items="${event.users}" var="user">
+                    <spring:url value="/users/profile/${user.id}" var="userUrl"/>
+                    <li>
+                        <a href="${userUrl}">${user.name}</a>
+                    </li>
+                </c:forEach>
+            </ul>
+        </c:when>
+        <c:otherwise>
+            <p>No user has joined yet</p>
+        </c:otherwise>
+    </c:choose>
+    <p class="well col-md-5">
+	    ${event.description}
+	</p>
 </div>

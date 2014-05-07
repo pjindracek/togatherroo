@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +34,8 @@ public class UserController {
 
 	@RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid User user, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
+        validateEmail(user, bindingResult);
+	    if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, user);
             return "users/create";
         }
@@ -76,13 +78,32 @@ public class UserController {
     }
 
 	@RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String update(@Valid User user, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    public String update(Principal principal, @Valid User user, BindingResult bindingResult, Model uiModel, 
+            HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, user);
             return "users/update";
         }
         uiModel.asMap().clear();
-        user.merge();
+        User.findUserByEmail(principal.getName()).updateUser(user);
         return "redirect:/users/profile";
+    }
+	
+	private void validateEmail(User user, BindingResult bindingResult) {
+	    if (User.findUserByEmail(user.getEmail()) != null) {
+	        bindingResult.rejectValue("email", "email.not_unique");
+	    }
+	}
+
+    public String delete() {
+        throw new RuntimeException("Not available");
+    }
+
+    public String list() {
+	    throw new RuntimeException("Not available");
+    }
+
+    public String show() {
+        throw new RuntimeException("Not available");
     }
 }

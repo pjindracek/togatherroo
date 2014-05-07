@@ -89,3 +89,9 @@ focus --class ~.domain.Group
 // [failed] field enum --fieldName category --type ~.domain.CategoryEnum --enumType ORDINAL 
 // [failed] field enum --fieldName category --type ~.domain.CategoryEnum --enumType ORDINAL 
 field enum --fieldName category --type ~.domain.CategoryEnum --enumType ORDINAL 
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-05-07 00:53:35
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-05-07 12:26:20
+focus --class ~.domain.User
+field string --fieldName passwordConfirm --transient 
+focus --class ~.domain.User
+field string --fieldName password_encrypted 

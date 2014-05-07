@@ -14,16 +14,18 @@
         <intercept-url pattern="/users/logout" access="permitAll" />
         <intercept-url pattern="/users/profile/**" access="permitAll" />
         <intercept-url pattern="/groups/search" access="permitAll" />
-        <intercept-url pattern="/groups/**" method="GET" access="permitAll" />        
+        <intercept-url pattern="/groups/*" method="GET" access="permitAll" />        
+        <intercept-url pattern="/groups/*/events/**" access="isAuthenticated()" />        
         <intercept-url pattern="/users" access="permitAll" />
         <intercept-url pattern="/**" access="isAuthenticated()" />
     </http>
     
     <authentication-manager>
         <authentication-provider>
+            <password-encoder hash="sha-256" />
             <jdbc-user-service 
                     data-source-ref="dataSource" 
-                    users-by-username-query="select email, password, 'true' as enabled from &quot;user&quot; where email like ?" 
+                    users-by-username-query="select email, password_encrypted as password, 'true' as enabled from &quot;user&quot; where email like ?" 
                     authorities-by-username-query="select email, 'ROLE_USER' as role from &quot;user&quot; where email like ?"/>
         </authentication-provider>
     </authentication-manager>

@@ -10,4 +10,7 @@
 <definition extends="default" name="events/update">
         <put-attribute name="body" value="/WEB-INF/views/events/update.jspx"/>
     </definition>
+<definition extends="default" name="events/list">
+        <put-attribute name="body" value="/WEB-INF/views/events/list.jspx"/>
+    </definition>
 </tiles-definitions>

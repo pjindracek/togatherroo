@@ -10,4 +10,10 @@
     <definition extends="default" name="users/profile">
         <put-attribute name="body" value="/WEB-INF/views/users/profile.jspx"/>
     </definition>
+<definition extends="default" name="users/list">
+        <put-attribute name="body" value="/WEB-INF/views/users/list.jspx"/>
+    </definition>
+<definition extends="default" name="users/show">
+        <put-attribute name="body" value="/WEB-INF/views/users/show.jspx"/>
+    </definition>
 </tiles-definitions>

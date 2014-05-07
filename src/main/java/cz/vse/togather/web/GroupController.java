@@ -10,20 +10,29 @@ import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import cz.vse.togather.domain.CategoryEnum;
 import cz.vse.togather.domain.Comment;
 import cz.vse.togather.domain.Group;
 import cz.vse.togather.domain.User;
+import cz.vse.togather.utils.CategoryPropertyEditor;
 
 @RequestMapping("/groups")
 @Controller
 @RooWebScaffold(path = "groups", formBackingObject = Group.class)
 public class GroupController {
+    
+    @InitBinder
+    public void setInitBinders(WebDataBinder dataBinder) {
+        dataBinder.registerCustomEditor(CategoryEnum.class, "category", new CategoryPropertyEditor());
+    }
 
 	@RequestMapping(value = "/{id}", produces = "text/html")
     public String show(@PathVariable("id") Long id, Model model, Principal principal,
@@ -43,8 +52,8 @@ public class GroupController {
     }
 
 	@RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String create(@Valid Group group, Principal principal,
-            BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    public String create(Principal principal,
+             Model uiModel, HttpServletRequest httpServletRequest, @Valid Group group, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, group);
             return "groups/create";
@@ -76,8 +85,8 @@ public class GroupController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/{id}/comment")
-	public String saveComment(@Valid @ModelAttribute("commentForm") Comment comment, Model model, Principal principal, 
-	        @PathVariable("id") Long id, BindingResult bindingResult, HttpServletRequest request) {
+	public String saveComment(Principal principal, Model model, @PathVariable("id") Long id, 
+	         HttpServletRequest request, @Valid @ModelAttribute("commentForm") Comment comment, BindingResult bindingResult) {
 	    if (bindingResult.hasErrors()) {
 	        return show(id, model, principal, comment);
 	    }
@@ -128,5 +137,17 @@ public class GroupController {
             group.merge();
         }
         return "redirect:/groups/" + encodeUrlPathSegment(group.getId().toString(), httpServletRequest);
+    }
+
+	@RequestMapping(params = "form", produces = "text/html")
+    public String createForm(Model uiModel) {
+        populateEditForm(uiModel, new Group());
+        return "groups/create";
+    }
+	
+	
+	// unimplemented methods preventing Spring Roo from recreating them in the aspect
+    public String list() {
+        throw new RuntimeException("Not available");
     }
 }

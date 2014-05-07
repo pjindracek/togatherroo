@@ -120,9 +120,6 @@
             <p>Discussion only for members.</p>
         </c:if>
     </div>
-    <page:show id="ps_cz_vse_togather_domain_Group" object="${group}" path="/groups" z="5P6KrFEo2Tcn2jIDm1tldRhFgNM=">
-        <field:display field="name" id="s_cz_vse_togather_domain_Group_name" object="${group}" z="RetoMNAKAgxJeamuZ9pb2flnFoI="/>
-        <field:display field="motto" id="s_cz_vse_togather_domain_Group_motto" object="${group}" z="cLGhc2ghf/o9ZK8JplQjiMCa884="/>
-        <field:display field="category" id="s_cz_vse_togather_domain_Group_category" object="${group}" z="+1T8y7hd/3lwhfDyd6Xe1/0LmfQ="/>
+    <page:show id="ps_cz_vse_togather_domain_Group" object="${group}" path="/groups" z="user-managed" render="false">
     </page:show>
 </div>

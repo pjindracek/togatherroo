@@ -8,8 +8,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -21,16 +23,19 @@ public class Group {
 
     /**
      */
+    @NotBlank
     private String name;
     
     /**
      */
+    @NotNull
     @Enumerated(EnumType.ORDINAL)
-    private CategoryEnum category;
+    private CategoryEnum category = CategoryEnum.CULTURE;
 
     /**
      */
     @Size(max = 500)
+    @NotBlank
     private String motto;
 
     /**

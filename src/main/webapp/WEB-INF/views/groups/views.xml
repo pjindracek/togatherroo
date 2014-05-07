@@ -14,6 +14,7 @@
 <definition extends="default" name="groups/search">
         <put-attribute name="body" value="/WEB-INF/views/groups/search.jspx"/>
     </definition>
+
 <definition extends="default" name="groups/list">
         <put-attribute name="body" value="/WEB-INF/views/groups/list.jspx"/>
     </definition>

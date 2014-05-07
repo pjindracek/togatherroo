@@ -20,12 +20,28 @@ privileged aspect User_Roo_JavaBean {
         this.email = email;
     }
     
+    public String User.getPasswordEncrypted() {
+        return this.passwordEncrypted;
+    }
+    
+    public void User.setPasswordEncrypted(String passwordEncrypted) {
+        this.passwordEncrypted = passwordEncrypted;
+    }
+    
     public String User.getPassword() {
         return this.password;
     }
     
     public void User.setPassword(String password) {
         this.password = password;
+    }
+    
+    public String User.getPasswordConfirm() {
+        return this.passwordConfirm;
+    }
+    
+    public void User.setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
     
     public String User.getName() {
