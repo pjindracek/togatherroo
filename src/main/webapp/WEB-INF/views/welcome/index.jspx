@@ -6,12 +6,11 @@ xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/js
   
 	<div class="jumbotron">
 	  <h1>ToGather</h1>
-	  <p style="text-align: justify">
-	    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae risus vulputate,
-	    condimentum sem a, aliquet mi. Sed molestie, nunc eu auctor ultrices, sapien odio imperdiet purus, at
-	    consectetur orci massa eu eros. Mauris ultricies ligula ut nunc egestas, id auctor quam bibendum. Integer at
-	    suscipit elit. Donec faucibus tellus in eleifend sollicitudin. Integer turpis massa, lobortis sit amet tellus ac,
-	    luctus mattis neque. Duis vitae posuere elit.
+	  <p>
+	    ToGather is here to provide you connection with like-minded people in this fast moving and anonymous age.
+	    If you have ever dreamed about meeting new people with same interests and hobbies to discuss whatever you are
+	    up to, you are on the right place. Just start with the "search" button or pick one of the latest groups below.
+	    Have a good time together!
 	  </p>
 	</div>
 	
