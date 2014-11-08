@@ -37,7 +37,7 @@
                 </form:form>
             </c:when>
             <c:otherwise>
-                <form:form action="${groupDeleteUrl}" method="DELETE" onsubmit="alert('Careful! You will delete the entire group!')">
+                <form:form action="${groupDeleteUrl}" method="DELETE" onsubmit="return confirm('Careful! You will delete the entire group!')">
                     <input type="submit" value="Delete the group"/>
                 </form:form>
             </c:otherwise>
@@ -56,8 +56,10 @@
                     </ul>
                 </c:when>
                 <c:otherwise>
-	       Only members can see other members in this group.
-            <a href="${signUpUrl}">Become a member!</a>
+	                Only members can see other members in this group.
+	                <form:form action="${groupRegisterUrl}" method="POST">
+	                    <input type="submit" value="Become a member!"/>
+	                </form:form>
                 </c:otherwise>
             </c:choose>
         </p>
@@ -120,6 +122,9 @@
             <p>Discussion only for members.</p>
         </c:if>
     </div>
-    <page:show id="ps_cz_vse_togather_domain_Group" object="${group}" path="/groups" z="user-managed" render="false">
+    <page:show id="ps_cz_vse_togather_domain_Group" object="${group}" path="/groups" render="false" z="user-managed">
+        <field:display field="name" id="s_cz_vse_togather_domain_Group_name" object="${group}" z="RetoMNAKAgxJeamuZ9pb2flnFoI="/>
+        <field:display field="category" id="s_cz_vse_togather_domain_Group_category" object="${group}" z="+1T8y7hd/3lwhfDyd6Xe1/0LmfQ="/>
+        <field:display field="motto" id="s_cz_vse_togather_domain_Group_motto" object="${group}" z="cLGhc2ghf/o9ZK8JplQjiMCa884="/>
     </page:show>
 </div>

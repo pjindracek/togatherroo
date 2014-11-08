@@ -7,5 +7,7 @@
         <field:textarea field="description" id="c_cz_vse_togather_domain_Event_description" z="2JGWuctOxdBOMb220ar62hKIgdQ="/>
         <field:datetime dateTimePattern="${event_beginning_date_format}" field="beginning" id="c_cz_vse_togather_domain_Event_beginning" required="true" z="OPu22EiyDaBTBXkK0sSGBtUTayc="/>
         <field:datetime dateTimePattern="${event_end_date_format}" field="end" id="c_cz_vse_togather_domain_Event_end" required="true" z="jmUGjRY57WQgUosExLrP2zF4rCc="/>
+        <field:select field="group" id="c_cz_vse_togather_domain_Event_group" itemValue="id" items="${groups}" path="/groups" render="false" z="user-managed"/>
+        <field:select field="users" id="c_cz_vse_togather_domain_Event_users" itemValue="id" items="${users}" multiple="true" path="/users" render="false" z="user-managed"/>
     </form:update>
 </div>

@@ -27,7 +27,7 @@ xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframe
             <sec:authorize access="isAuthenticated()">
               <li><a href='${profile}'>My profile</a></li>
               <li><a href='${userEdit}'>Edit profile</a></li>
-              <li><a href='${groupNew}'>Set up new group</a></li>
+              <li><a href='${groupNew}'>Set up a new group</a></li>
               <li><a href='${userLogout}'>Logout</a></li>
             </sec:authorize>
             <sec:authorize access="isAnonymous()">

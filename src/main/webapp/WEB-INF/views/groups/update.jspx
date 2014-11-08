@@ -4,7 +4,10 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_cz_vse_togather_domain_Group" modelAttribute="group" path="/groups" versionField="Version" z="user-managed">
         <field:input field="name" id="c_cz_vse_togather_domain_Group_name" z="Q87M9rE6VdFJvOBK0mlQf4fmw9M="/>
-        <field:select field="category" id="c_cz_vse_togather_domain_Group_category" itemLabel="name" itemValue="order" items="${categoryenums}" path="categoryenums" z="eqSnlJFyQK493tm0BVIfNQQAUcY="/>
+        <field:select field="category" id="c_cz_vse_togather_domain_Group_category" itemLabel="name" itemValue="order" items="${categoryenums}" path="categoryenums" z="user-managed"/>
         <field:textarea field="motto" id="c_cz_vse_togather_domain_Group_motto" z="fNRjmBIA9Ehle/9nK9W4IwI1Q84="/>
+        <field:simple field="memberships" id="c_cz_vse_togather_domain_Group_memberships" messageCode="entity_reference_not_managed" messageCodeAttribute="Membership" render="false" z="user-managed"/>
+        <field:simple field="comments" id="c_cz_vse_togather_domain_Group_comments" messageCode="entity_reference_not_managed" messageCodeAttribute="Comment" render="false" z="user-managed"/>
+        <field:simple field="events" id="c_cz_vse_togather_domain_Group_events" messageCode="entity_reference_not_managed" messageCodeAttribute="Event" render="false" z="user-managed"/>
     </form:update>
 </div>

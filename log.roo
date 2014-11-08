@@ -95,3 +95,6 @@ focus --class ~.domain.User
 field string --fieldName passwordConfirm --transient 
 focus --class ~.domain.User
 field string --fieldName password_encrypted 
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-05-08 00:53:58
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-05-12 18:35:52
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-05-13 01:34:58

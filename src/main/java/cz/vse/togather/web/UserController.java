@@ -19,7 +19,7 @@ import cz.vse.togather.domain.User;
 
 @RequestMapping("/users")
 @Controller
-@RooWebScaffold(path = "users", formBackingObject = User.class)
+@RooWebScaffold(path = "users", formBackingObject = User.class, exposeFinders=false, delete=false)
 public class UserController {
     
     @RequestMapping("/login")
